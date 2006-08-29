@@ -22,34 +22,34 @@ Any arguments to startgnome will be passed to xinit, for example:
 
 
 Runtime requirements:
-  cygwin-1.5.20-1
+  cygwin-1.5.21-1
   GConf2-2.14.0-2
-  ORBit2-2.14.0-1
+  ORBit2-2.14.2-1
   atk-1.10.3-1
   glib2-2.10.3-1
-  gtk2-x11-2.8.17-1
-  libICE6-1.0.0-1
-  libSM6-1.0.0-1
-  libX11_6-1.0.0-2
-  libXrandr2-1.1.0.2-1
+  gtk2-x11-2.8.20-1
+  libICE6-1.0.1-1
+  libSM6-1.0.1-1
+  libX11_6-1.0.2-1
+  libXrandr2-1.1.1-1
   libbonobo2-2.14.0-1
   libesound0-0.2.36-1
-  libgnome-desktop2-2.14.1-1
+  libgnome-desktop2-2.14.2-1
   libgnome2-2.14.1-1
   libgnomeui2-2.14.1-1
 
 Build requirements:
 (besides corresponding -devel packages)
-  cygwin-1.5.20-1
+  cygwin-1.5.21-1
   autoconf2.5-2.59-2
   automake1.9-1.9.6-1
-  binutils-20050610-1
-  cygport-0.2.1-1
+  binutils-20060709-1
+  cygport-0.2.5-1
   gawk-3.1.5-2
   gcc-core-3.4.4-1
   intltool-0.35.0-1
   libtool1.5-1.5.22-1
-  make-3.80-1
+  make-3.81-1
   pkg-config-0.20-1
   sed-4.1.5-1
 
@@ -62,15 +62,15 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack gnome-session-2.14.2-1-src.tar.bz2
+  unpack gnome-session-2.14.3-1-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./gnome-session-2.14.2-1.cygport all
+  cygport ./gnome-session-2.14.3-1.cygport all
 
 This will create:
-  /usr/src/gnome-session-2.14.2-1-src.tar.bz2
-  /usr/src/gnome-session-2.14.2-1.tar.bz2
+  /usr/src/gnome-session-2.14.3-1-src.tar.bz2
+  /usr/src/gnome-session-2.14.3-1.tar.bz2
 
 -------------------------------------------
 
@@ -87,16 +87,16 @@ Files included in the binary package:
   /usr/bin/gnome-wm
   /usr/bin/startgnome
   /usr/share/applications/session-properties.desktop
-  /usr/share/doc/Cygwin/gnome-session-2.14.2.README
-  /usr/share/doc/gnome-session-2.14.2/AUTHORS
-  /usr/share/doc/gnome-session-2.14.2/COPYING
-  /usr/share/doc/gnome-session-2.14.2/COPYING-DOCS
-  /usr/share/doc/gnome-session-2.14.2/COPYING.LIB
-  /usr/share/doc/gnome-session-2.14.2/ChangeLog
-  /usr/share/doc/gnome-session-2.14.2/HACKING
-  /usr/share/doc/gnome-session-2.14.2/INSTALL
-  /usr/share/doc/gnome-session-2.14.2/NEWS
-  /usr/share/doc/gnome-session-2.14.2/README
+  /usr/share/doc/Cygwin/gnome-session-2.14.3.README
+  /usr/share/doc/gnome-session-2.14.3/AUTHORS
+  /usr/share/doc/gnome-session-2.14.3/COPYING
+  /usr/share/doc/gnome-session-2.14.3/COPYING-DOCS
+  /usr/share/doc/gnome-session-2.14.3/COPYING.LIB
+  /usr/share/doc/gnome-session-2.14.3/ChangeLog
+  /usr/share/doc/gnome-session-2.14.3/HACKING
+  /usr/share/doc/gnome-session-2.14.3/INSTALL
+  /usr/share/doc/gnome-session-2.14.3/NEWS
+  /usr/share/doc/gnome-session-2.14.3/README
   /usr/share/gnome/default.session
   /usr/share/gnome/default.wm
   /usr/share/locale/af/LC_MESSAGES/gnome-session-2.0.mo
@@ -188,6 +188,9 @@ Files included in the binary package:
 ------------------
 
 Port Notes:
+
+----- version 2.14.3-1 -----
+Version bump.
 
 ----- version 2.14.2-1 -----
 Version bump.
