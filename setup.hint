@@ -1,5 +1,5 @@
 category: Gnome X11
-requires: cygwin GConf2 ORBit2 atk glib2 gtk2-x11 libICE6 libSM6 libX11_6 libXrandr2 libbonobo2 libesound0 libgnome-desktop2 libgnome2 libgnomeui2 control-center2 esound gnome-desktop gnome-icon-theme gnome-panel metacity nautilus xscreensaver sysvinit
+requires: cygwin GConf2 ORBit2 atk glib2 gtk2-x11 libICE6 libSM6 libX11_6 libXrandr2 libbonobo2 libdbus-glib_1_2 libesound0 libgnome-desktop2 libgnome2 libgnomeui2 control-center2 esound gnome-desktop gnome-icon-theme gnome-panel metacity nautilus xscreensaver sysvinit
 sdesc: "GNOME session manager (includes startgnome script)"
 ldesc: "Contained here are--
    * the GNOME session manager
