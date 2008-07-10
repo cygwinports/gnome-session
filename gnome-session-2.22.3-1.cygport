@@ -1,0 +1,7 @@
+inherit gnome2
+
+DESCRIPTION="GNOME session manager"
+
+DIFF_EXCLUDES="man"
+
+CYGCONF_ARGS="--disable-ipv6 --with-window-manager=metacity"
