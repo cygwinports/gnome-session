@@ -1,6 +1,6 @@
 category: Gnome X11
-requires: cygwin GConf2 ORBit2 atk glib2 gtk2-x11 libICE6 libSM6 libX11_6 libXau6 libXrandr2 libbonobo2 libdbus-glib_1_2 libdbus1_3 libgnome2 libgnomeui2 libintl8 pango esound gnome-control-center gnome-desktop gnome-icon-theme gnome-panel metacity nautilus xscreensaver sysvinit
-sdesc: "GNOME session manager (includes startgnome script)"
+requires: cygwin GConf2 at-spi libdbus-glib_1_2 libdbus1_3 libgconf2_4 libgdk_pixbuf2.0_0 libglade2.0_0 libglib2.0_0 libgnome-keyring0 libgnome2_0 libgnomeui2_0 libgtk2.0_0 libICE6 libintl8 libpango1.0_0 libSM6 libstartup-notification1_0 libX11_6 libXau6 libXrender1 esound gnome-control-center gnome-desktop gnome-icon-theme gnome-panel gnome-settings-daemon metacity nautilus xscreensaver
+sdesc: "GNOME session manager"
 ldesc: "Contained here are--
    * the GNOME session manager
    * the GNOME session manager configuration program
