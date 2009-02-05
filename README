@@ -23,23 +23,23 @@ Any arguments to startgnome will be passed to xinit, for example:
 
 Runtime requirements:
   cygwin-1.5.25-15
-  at-spi-1.24.0-1
-  libdbus-glib_1_2-0.76-1
+  at-spi-1.24.1-1
+  libdbus-glib_1_2-0.78-1
   libdbus1_3-1.2.4-1
   libgconf2_4-2.24.0-1
-  libgdk_pixbuf2.0_0-2.14.5-1
+  libgdk_pixbuf2.0_0-2.14.7-1
   libglade2.0_0-2.6.3-2
-  libglib2.0_0-2.18.3-1
+  libglib2.0_0-2.18.4-1
   libgnome-keyring0-2.24.1-1
   libgnome2_0-2.24.1-1
   libgnomeui2_0-2.24.0-1
-  libgtk2.0_0-2.14.5-1
+  libgtk2.0_0-2.14.7-1
   libICE6-1.0.4-2
   libintl8-0.17-2
-  libpango1.0_0-1.22.3-1
+  libpango1.0_0-1.22.4-1
   libSM6-1.1.0-1
   libstartup-notification1_0-0.9-2
-  libX11_6-1.1.5-1
+  libX11_6-1.1.5-2
   libXau6-1.0.4-1
   libXrender1-0.9.4-2
 
@@ -68,15 +68,15 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack gnome-session-2.22.3-1-src.tar.bz2
+  unpack gnome-session-2.24.3-1-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./gnome-session-2.22.3-1.cygport all
+  cygport ./gnome-session-2.24.3-1.cygport all
 
 This will create:
-  /usr/src/gnome-session-2.22.3-1-src.tar.bz2
-  /usr/src/gnome-session-2.22.3-1.tar.bz2
+  /usr/src/gnome-session-2.24.3-1-src.tar.bz2
+  /usr/src/gnome-session-2.24.3-1.tar.bz2
 
 -------------------------------------------
 
@@ -94,14 +94,14 @@ Files included in the binary package:
   /usr/lib/gnome-session/helpers/gnome-session-splash.exe
   /usr/lib/gnome-session/helpers/gnome-settings-daemon-helper.exe
   /usr/share/applications/session-properties.desktop
-  /usr/share/doc/gnome-session-2.24.2/AUTHORS
-  /usr/share/doc/gnome-session-2.24.2/COPYING
-  /usr/share/doc/gnome-session-2.24.2/COPYING.LIB
-  /usr/share/doc/gnome-session-2.24.2/ChangeLog
-  /usr/share/doc/gnome-session-2.24.2/INSTALL
-  /usr/share/doc/gnome-session-2.24.2/NEWS
-  /usr/share/doc/gnome-session-2.24.2/README
-  /usr/share/doc/gnome-session-2.24.2/dbus/gnome-session.html
+  /usr/share/doc/gnome-session-2.24.3/AUTHORS
+  /usr/share/doc/gnome-session-2.24.3/COPYING
+  /usr/share/doc/gnome-session-2.24.3/COPYING.LIB
+  /usr/share/doc/gnome-session-2.24.3/ChangeLog
+  /usr/share/doc/gnome-session-2.24.3/INSTALL
+  /usr/share/doc/gnome-session-2.24.3/NEWS
+  /usr/share/doc/gnome-session-2.24.3/README
+  /usr/share/doc/gnome-session-2.24.3/dbus/gnome-session.html
   /usr/share/gnome-session/gsm-inhibit-dialog.glade
   /usr/share/gnome-session/session-properties.glade
   /usr/share/gnome/autostart/at-spi-registryd-wrapper.desktop
@@ -211,6 +211,12 @@ Files included in the binary package:
 ------------------
 
 Port Notes:
+
+----- version 2.24.3-1 -----
+Version bump.
+
+----- version 2.24.2-1 -----
+Version bump for GNOME 2.24.
 
 ----- version 2.22.3-1 -----
 Version bump.
