@@ -1,5 +1,5 @@
 category: Gnome X11
-requires: cygwin GConf2 at-spi libdbus-glib_1_2 libdbus1_3 libgconf2_4 libgdk_pixbuf2.0_0 libglade2.0_0 libglib2.0_0 libgtk2.0_0 libICE6 libintl8 libpango1.0_0 libSM6 libstartup-notification1_0 libX11_6 libXau6 libXext6 libXrender1 libXtst6 esound gnome-control-center gnome-desktop gnome-icon-theme gnome-panel gnome-settings-daemon metacity nautilus xscreensaver
+requires: GConf2 at-spi libdbus-glib_1_2 libdbus1_3 libgconf2_4 libgdk_pixbuf2.0_0 libglade2.0_0 libglib2.0_0 libgtk2.0_0 libICE6 libintl8 libpango1.0_0 libSM6 libstartup-notification1_0 libX11_6 libXau6 libXext6 libXrender1 libXtst6 esound gnome-control-center gnome-desktop gnome-icon-theme gnome-panel gnome-settings-daemon metacity nautilus xscreensaver
 sdesc: "GNOME session manager"
 ldesc: "Contained here are--
    * the GNOME session manager
