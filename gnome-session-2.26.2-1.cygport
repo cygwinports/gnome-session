@@ -4,8 +4,6 @@ DESCRIPTION="GNOME session manager"
 
 DIFF_EXCLUDES="man"
 
-PATCH_URI="2.24-no-execinfo.h.patch"
-
 CYGCONF_ARGS="
 	--with-at-spi-registryd-directory=/usr/lib/at-spi
 	--with-window-manager=metacity

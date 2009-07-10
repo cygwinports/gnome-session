@@ -22,22 +22,22 @@ Any arguments to startgnome will be passed to xinit, for example:
 	startgnome -clipboard -nodecoration -unixkill
 
 Runtime requirements:
-  cygwin-1.7.0-45
+  cygwin-1.7.0-50
   at-spi-1.26.0-1
   libdbus-glib_1_2-0.80-10
-  libdbus1_3-1.2.12-10
+  libdbus1_3-1.2.14-1
   libgcc1-4.3.2-2
-  libgconf2_4-2.26.0-1
-  libgdk_pixbuf2.0_0-2.16.1-1
+  libgconf2_4-2.26.2-1
+  libgdk_pixbuf2.0_0-2.16.3-1
   libglade2.0_0-2.6.4-1
-  libglib2.0_0-2.20.1-1
-  libgtk2.0_0-2.16.1-1
+  libglib2.0_0-2.20.4-1
+  libgtk2.0_0-2.16.3-1
   libICE6-1.0.5-10
-  libintl8-0.17-10
-  libpango1.0_0-1.24.1-1
+  libintl8-0.17-11
+  libpango1.0_0-1.24.3-1
   libSM6-1.1.0-10
-  libstartup-notification1_0-0.9-10
-  libX11_6-1.2-10
+  libstartup-notification1_0-0.10-1
+  libX11_6-1.2.1-1
   libXau6-1.0.4-10
   libXext6-1.0.5-10
   libXrender1-0.9.4-10
@@ -46,15 +46,15 @@ Runtime requirements:
 Build requirements:
 (besides corresponding -devel packages)
   autoconf2.5-2.63-10
-  automake1.10-1.10.1-10
+  automake1.10-1.10.2-10
   binutils-20080624-2
-  cygport-0.9.6-1
+  cygport-0.9.7-1
   gawk-3.1.6-2
   gcc4-core-4.3.2-2
-  gettext-devel-0.17-10
-  gnome-common-2.26.0-1
+  gettext-devel-0.17-11
+  gnome-common-2.26.0-2
   intltool-0.40.6-1
-  libtool-2.2.7a-12
+  libtool-2.2.7a-13
   make-3.81-2
   pkg-config-0.23b-10
   sed-4.1.5-2
@@ -68,15 +68,15 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack gnome-session-2.26.1-1-src.tar.bz2
+  unpack gnome-session-2.26.2-1-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./gnome-session-2.26.1-1.cygport all
+  cygport ./gnome-session-2.26.2-1.cygport all
 
 This will create:
-  /usr/src/gnome-session-2.26.1-1-src.tar.bz2
-  /usr/src/gnome-session-2.26.1-1.tar.bz2
+  /usr/src/gnome-session-2.26.2-1-src.tar.bz2
+  /usr/src/gnome-session-2.26.2-1.tar.bz2
 
 -------------------------------------------
 
@@ -216,6 +216,9 @@ Files included in the binary package:
 ------------------
 
 Port Notes:
+
+----- version 2.26.2-1 -----
+Version bump.
 
 ----- version 2.26.1-1 -----
 Initial release of GNOME 2.26 for Cygwin 1.7.
