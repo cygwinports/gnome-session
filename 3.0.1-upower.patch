@@ -1,16 +1,18 @@
---- origsrc/gnome-session-2.32.1/configure.ac	2010-11-17 05:17:04.000000000 -0600
-+++ src/gnome-session-2.32.1/configure.ac	2010-12-19 21:33:19.300194800 -0600
-@@ -70,9 +70,17 @@ PKG_CHECK_MODULES(GNOME_SESSION,
+--- origsrc/gnome-session-3.0.1/configure.ac	2011-04-04 16:15:41.000000000 -0500
++++ src/gnome-session-3.0.1/configure.ac	2011-05-13 16:46:12.842482800 -0500
+@@ -56,10 +56,19 @@ PKG_CHECK_MODULES(GNOME_SESSION,
          gio-2.0 >= $GLIB_REQUIRED
-         gtk+-$GTK_API_VERSION >= $GTK_REQUIRED
+         gtk+-3.0 >= $GTK3_REQUIRED
          dbus-glib-1 >= $DBUS_GLIB_REQUIRED
 -        upower-glib >= $UPOWER_REQUIRED
+         librsvg-2.0
  )
  
 +PKG_CHECK_MODULES(UPOWER,
 +        upower-glib >= $UPOWER_REQUIRED,
 +        have_upower=true,
-+        have_upower=false)
++        have_upower=false
++)
 +
 +if test "$have_upower" = true; then
 +  AC_DEFINE(WITH_UPOWER, 1, [Set to 1 if upower-glib is available.])
@@ -18,9 +20,9 @@
 +
  PKG_CHECK_MODULES(SESSION_PROPERTIES,
          glib-2.0 >= $GLIB_REQUIRED
-         gtk+-$GTK_API_VERSION >= $GTK_REQUIRED
---- origsrc/gnome-session-2.32.1/gnome-session/gsm-logout-dialog.c	2010-07-15 07:53:08.000000000 -0500
-+++ src/gnome-session-2.32.1/gnome-session/gsm-logout-dialog.c	2010-12-19 21:25:48.682909700 -0600
+         gtk+-3.0 >= $GTK3_REQUIRED
+--- origsrc/gnome-session-3.0.1/gnome-session/gsm-logout-dialog.c	2011-03-22 15:31:43.000000000 -0500
++++ src/gnome-session-3.0.1/gnome-session/gsm-logout-dialog.c	2011-05-13 16:48:12.608396400 -0500
 @@ -27,7 +27,9 @@
  #include <glib/gi18n.h>
  #include <gtk/gtk.h>
@@ -31,7 +33,7 @@
  
  #include "gsm-logout-dialog.h"
  #include "gsm-consolekit.h"
-@@ -50,7 +52,9 @@ struct _GsmLogoutDialogPrivate
+@@ -52,7 +54,9 @@ struct _GsmLogoutDialogPrivate
  {
          GsmDialogLogoutType  type;
  
@@ -41,7 +43,7 @@
          GsmConsolekit       *consolekit;
  
          int                  timeout;
-@@ -142,7 +146,9 @@ gsm_logout_dialog_init (GsmLogoutDialog
+@@ -144,7 +148,9 @@ gsm_logout_dialog_init (GsmLogoutDialog
          gtk_window_set_keep_above (GTK_WINDOW (logout_dialog), TRUE);
          gtk_window_stick (GTK_WINDOW (logout_dialog));
  
@@ -51,7 +53,7 @@
  
          logout_dialog->priv->consolekit = gsm_get_consolekit ();
  
-@@ -166,10 +172,12 @@ gsm_logout_dialog_destroy (GsmLogoutDial
+@@ -168,10 +174,12 @@ gsm_logout_dialog_destroy (GsmLogoutDial
                  logout_dialog->priv->timeout_id = 0;
          }
  
@@ -64,7 +66,7 @@
  
          if (logout_dialog->priv->consolekit) {
                  g_object_unref (logout_dialog->priv->consolekit);
-@@ -182,13 +190,21 @@ gsm_logout_dialog_destroy (GsmLogoutDial
+@@ -184,13 +192,21 @@ gsm_logout_dialog_destroy (GsmLogoutDial
  static gboolean
  gsm_logout_supports_system_suspend (GsmLogoutDialog *logout_dialog)
  {
@@ -86,19 +88,19 @@
  }
  
  static gboolean
---- origsrc/gnome-session-2.32.1/gnome-session/gsm-manager.c	2010-11-17 05:17:04.000000000 -0600
-+++ src/gnome-session-2.32.1/gnome-session/gsm-manager.c	2010-12-19 21:28:56.914961900 -0600
-@@ -38,7 +38,9 @@
- #include <dbus/dbus-glib.h>
+--- origsrc/gnome-session-3.0.1/gnome-session/gsm-manager.c	2011-03-30 02:47:33.000000000 -0500
++++ src/gnome-session-3.0.1/gnome-session/gsm-manager.c	2011-05-13 16:53:38.163147400 -0500
+@@ -39,7 +39,9 @@
  #include <dbus/dbus-glib-lowlevel.h>
+ #include <librsvg/rsvg.h>
  
 +#ifdef WITH_UPOWER
  #include <upower.h>
 +#endif
  
  #include <gtk/gtk.h> /* for logout dialog */
- #include <gconf/gconf-client.h>
-@@ -134,8 +136,10 @@ struct GsmManagerPrivate
+ 
+@@ -153,8 +155,10 @@ struct GsmManagerPrivate
          DBusGProxy             *bus_proxy;
          DBusGConnection        *connection;
  
@@ -106,10 +108,10 @@
          /* Interface with other parts of the system */
          UpClient               *up_client;
 +#endif
- };
  
- enum {
-@@ -983,6 +987,7 @@ manager_perhaps_lock (GsmManager *manage
+         GsmShell               *shell;
+         guint                   shell_end_session_dialog_canceled_id;
+@@ -1096,6 +1100,7 @@ manager_perhaps_lock (GsmManager *manage
  static void
  manager_attempt_hibernate (GsmManager *manager)
  {
@@ -117,7 +119,7 @@
          gboolean  can_hibernate;
          GError   *error;
          gboolean  ret;
-@@ -1001,11 +1006,13 @@ manager_attempt_hibernate (GsmManager *m
+@@ -1114,11 +1119,13 @@ manager_attempt_hibernate (GsmManager *m
                          g_error_free (error);
                  }
          }
@@ -131,7 +133,7 @@
          gboolean  can_suspend;
          GError   *error;
          gboolean  ret;
-@@ -1024,6 +1031,7 @@ manager_attempt_suspend (GsmManager *man
+@@ -1137,6 +1144,7 @@ manager_attempt_suspend (GsmManager *man
                          g_error_free (error);
                  }
          }
@@ -139,8 +141,8 @@
  }
  
  static void
-@@ -2196,10 +2204,12 @@ gsm_manager_dispose (GObject *object)
-                 manager->priv->gconf_client = NULL;
+@@ -2519,10 +2527,12 @@ gsm_manager_dispose (GObject *object)
+                 manager->priv->lockdown_settings = NULL;
          }
  
 +#ifdef WITH_UPOWER
@@ -150,30 +152,32 @@
          }
 +#endif
  
-         G_OBJECT_CLASS (gsm_manager_parent_class)->dispose (object);
- }
-@@ -2429,7 +2439,9 @@ gsm_manager_init (GsmManager *manager)
-                           G_CALLBACK (on_presence_status_changed),
-                           manager);
+         if (manager->priv->shell != NULL) {
+                 g_object_unref (manager->priv->shell);
+@@ -2728,7 +2738,9 @@ gsm_manager_init (GsmManager *manager)
+                                       NULL,
+                                       NULL, NULL);
  
 +#ifdef WITH_UPOWER
          manager->priv->up_client = up_client_new ();
 +#endif
  
-         /* GConf setup */
-         gconf_client_add_dir (manager->priv->gconf_client,
-@@ -2953,10 +2965,15 @@ gsm_manager_can_shutdown (GsmManager *ma
-         gboolean can_suspend;
-         gboolean can_hibernate;
+         manager->priv->shell = gsm_get_shell ();
+ }
+@@ -3329,13 +3341,15 @@ gsm_manager_can_shutdown (GsmManager *ma
+                           GError    **error)
+ {
+         GsmConsolekit *consolekit;
+-        gboolean can_suspend;
+-        gboolean can_hibernate;
++        gboolean can_suspend = FALSE;
++        gboolean can_hibernate = FALSE;
  
 +#ifdef WITH_UPOWER
          g_object_get (manager->priv->up_client,
                        "can-suspend", &can_suspend,
                        "can-hibernate", &can_hibernate,
                        NULL);
-+#else
-+        can_suspend = FALSE;
-+        can_hibernate = FALSE;
 +#endif
  
          g_debug ("GsmManager: CanShutdown called");

@@ -1,9 +1,0 @@
-inherit gnome2
-
-DESCRIPTION="GNOME session manager"
-
-PATCH_URI="2.32-upower.patch"
-
-DIFF_EXCLUDES="man"
-
-CYGCONF_ARGS="--with-default-wm=metacity --enable-splash"
