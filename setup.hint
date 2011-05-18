@@ -1,5 +1,5 @@
 category: Gnome X11
-requires: GConf2 at-spi2-core libcairo2 libdbus-glib_1_2 libdbus1_3 libgconf2_4 libgdk_pixbuf2.0_0 libglib2.0_0 libGL1 libgtk3_0 libICE6 libintl8 libSM6 libX11_6 libXau6 libXcomposite1 libXext6 libXrender1 libXtst6 gnome-control-center gnome-desktop gnome-icon-theme gnome-panel gnome-settings-daemon metacity nautilus
+requires: GConf2 at-spi2-core libcairo2 libdbus-glib_1_2 libdbus1_3 libgconf2_4 libgdk_pixbuf2.0_0 libglib2.0_0 libGL1 libgtk3_0 libICE6 libintl8 libSM6 libX11_6 libXau6 libXcomposite1 libXext6 libXrender1 libXtst6 gnome-control-center gnome-desktop gnome-icon-theme gnome-panel gnome-settings-daemon metacity nautilus notification-daemon
 sdesc: "GNOME session manager"
 ldesc: "Contained here are--
    * the GNOME session manager
