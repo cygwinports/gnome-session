@@ -2,6 +2,8 @@ inherit gnome2
 
 DESCRIPTION="GNOME session manager"
 
+PATCH_URI="3.0.1-upower.patch"
+
 DIFF_EXCLUDES="man"
 
 CYGCONF_ARGS="--libexecdir=/usr/lib/${PN}"
