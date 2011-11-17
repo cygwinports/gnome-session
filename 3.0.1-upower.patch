@@ -5,7 +5,7 @@
          gtk+-3.0 >= $GTK3_REQUIRED
          dbus-glib-1 >= $DBUS_GLIB_REQUIRED
 -        upower-glib >= $UPOWER_REQUIRED
-         librsvg-2.0
+         json-glib-1.0 >= $JSON_GLIB_REQUIRED
  )
  
 +PKG_CHECK_MODULES(UPOWER,
