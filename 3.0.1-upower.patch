@@ -40,7 +40,7 @@
 +#ifdef WITH_UPOWER
          UpClient            *up_client;
 +#endif
-         GsmConsolekit       *consolekit;
+         GsmSystem           *system;
  
          int                  timeout;
 @@ -144,7 +148,9 @@ gsm_logout_dialog_init (GsmLogoutDialog
@@ -167,7 +167,7 @@
 @@ -3329,13 +3341,15 @@ gsm_manager_can_shutdown (GsmManager *ma
                            GError    **error)
  {
-         GsmConsolekit *consolekit;
+         GsmSystem *system;
 -        gboolean can_suspend;
 -        gboolean can_hibernate;
 +        gboolean can_suspend = FALSE;
