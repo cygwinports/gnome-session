@@ -88,97 +88,106 @@
  }
  
  static gboolean
---- origsrc/gnome-session-3.0.1/gnome-session/gsm-manager.c	2011-03-30 02:47:33.000000000 -0500
-+++ src/gnome-session-3.0.1/gnome-session/gsm-manager.c	2011-05-13 16:53:38.163147400 -0500
-@@ -39,7 +39,9 @@
+--- origsrc/gnome-session-3.6.2/gnome-session/gsm-consolekit.c	2012-11-12 17:32:21.000000000 -0600
++++ src/gnome-session-3.6.2/gnome-session/gsm-consolekit.c	2012-12-19 19:48:14.730872800 -0600
+@@ -31,7 +31,9 @@
+ #include <dbus/dbus-glib.h>
  #include <dbus/dbus-glib-lowlevel.h>
- #include <librsvg/rsvg.h>
  
 +#ifdef WITH_UPOWER
  #include <upower.h>
 +#endif
  
- #include <gtk/gtk.h> /* for logout dialog */
- 
-@@ -153,8 +155,10 @@ struct GsmManagerPrivate
-         DBusGProxy             *bus_proxy;
-         DBusGConnection        *connection;
- 
+ #include "gsm-system.h"
+ #include "gsm-consolekit.h"
+@@ -55,7 +57,9 @@ struct _GsmConsolekitPrivate
+         DBusGConnection *dbus_connection;
+         DBusGProxy      *bus_proxy;
+         DBusGProxy      *ck_proxy;
 +#ifdef WITH_UPOWER
-         /* Interface with other parts of the system */
-         UpClient               *up_client;
+         UpClient        *up_client;
 +#endif
+ };
  
-         GsmShell               *shell;
-         guint                   shell_end_session_dialog_canceled_id;
-@@ -1096,6 +1100,7 @@ manager_perhaps_lock (GsmManager *manage
- static void
- manager_attempt_hibernate (GsmManager *manager)
+ static void     gsm_consolekit_class_init   (GsmConsolekitClass *klass);
+@@ -214,6 +218,7 @@ gsm_consolekit_on_name_owner_changed (DB
+                                       const char    *new_owner,
+                                       GsmConsolekit *manager)
  {
 +#ifdef WITH_UPOWER
-         gboolean  can_hibernate;
-         GError   *error;
-         gboolean  ret;
-@@ -1114,11 +1119,13 @@ manager_attempt_hibernate (GsmManager *m
-                         g_error_free (error);
-                 }
+         if (name != NULL && strcmp (name, "org.freedesktop.ConsoleKit") != 0) {
+                 return;
          }
-+#endif
- }
+@@ -223,7 +228,7 @@ gsm_consolekit_on_name_owner_changed (DB
  
- static void
- manager_attempt_suspend (GsmManager *manager)
- {
-+#ifdef WITH_UPOWER
-         gboolean  can_suspend;
-         GError   *error;
-         gboolean  ret;
-@@ -1137,6 +1144,7 @@ manager_attempt_suspend (GsmManager *man
-                         g_error_free (error);
-                 }
-         }
-+#endif
- }
- 
- static void
-@@ -2519,10 +2527,12 @@ gsm_manager_dispose (GObject *object)
-                 manager->priv->lockdown_settings = NULL;
-         }
- 
-+#ifdef WITH_UPOWER
-         if (manager->priv->up_client != NULL) {
-                 g_object_unref (manager->priv->up_client);
-                 manager->priv->up_client = NULL;
-         }
-+#endif
- 
-         if (manager->priv->shell != NULL) {
-                 g_object_unref (manager->priv->shell);
-@@ -2728,7 +2738,9 @@ gsm_manager_init (GsmManager *manager)
-                                       NULL,
-                                       NULL, NULL);
- 
-+#ifdef WITH_UPOWER
+         gsm_consolekit_ensure_ck_connection (manager, NULL);
          manager->priv->up_client = up_client_new ();
+-
 +#endif
- 
-         manager->priv->shell = gsm_get_shell ();
  }
-@@ -3329,13 +3341,15 @@ gsm_manager_can_shutdown (GsmManager *ma
-                           GError    **error)
- {
-         GsmSystem *system;
--        gboolean can_suspend;
--        gboolean can_hibernate;
-+        gboolean can_suspend = FALSE;
-+        gboolean can_hibernate = FALSE;
  
+ static void
+@@ -247,7 +252,9 @@ gsm_consolekit_free_dbus (GsmConsolekit
+ {
+         g_clear_object (&manager->priv->bus_proxy);
+         g_clear_object (&manager->priv->ck_proxy);
 +#ifdef WITH_UPOWER
-         g_object_get (manager->priv->up_client,
-                       "can-suspend", &can_suspend,
-                       "can-hibernate", &can_hibernate,
-                       NULL);
+         g_clear_object (&manager->priv->up_client);
 +#endif
  
-         g_debug ("GsmManager: CanShutdown called");
+         if (manager->priv->dbus_connection != NULL) {
+                 DBusConnection *connection;
+@@ -814,22 +821,31 @@ gsm_consolekit_is_login_session (GsmSyst
+ static gboolean
+ gsm_consolekit_can_suspend (GsmSystem *system)
+ {
++#ifdef WITH_UPOWER
+         GsmConsolekit *consolekit = GSM_CONSOLEKIT (system);
  
+         return up_client_get_can_suspend (consolekit->priv->up_client);
++#else
++        return FALSE;
++#endif
+ }
+ 
+ static gboolean
+ gsm_consolekit_can_hibernate (GsmSystem *system)
+ {
++#ifdef WITH_UPOWER
+         GsmConsolekit *consolekit = GSM_CONSOLEKIT (system);
+ 
+         return up_client_get_can_hibernate (consolekit->priv->up_client);
++#else
++        return FALSE;
++#endif
+ }
+ 
+ static void
+ gsm_consolekit_suspend (GsmSystem *system)
+ {
++#ifdef WITH_UPOWER
+         GsmConsolekit *consolekit = GSM_CONSOLEKIT (system);
+         GError *error = NULL;
+         gboolean ret;
+@@ -839,11 +855,13 @@ gsm_consolekit_suspend (GsmSystem *syste
+                 g_warning ("Unexpected suspend failure: %s", error->message);
+                 g_error_free (error);
+         }
++#endif
+ }
+ 
+ static void
+ gsm_consolekit_hibernate (GsmSystem *system)
+ {
++#ifdef WITH_UPOWER
+         GsmConsolekit *consolekit = GSM_CONSOLEKIT (system);
+         GError *error = NULL;
+         gboolean ret;
+@@ -853,6 +871,7 @@ gsm_consolekit_hibernate (GsmSystem *sys
+                 g_warning ("Unexpected hibernate failure: %s", error->message);
+                 g_error_free (error);
+         }
++#endif
+ }
+ 
+ static void
