@@ -2,7 +2,7 @@ inherit gnome2
 
 NAME="gnome-session"
 VERSION=3.6.2
-RELEASE=1
+RELEASE=2
 CATEGORY="GNOME"
 SUMMARY="GNOME session manager"
 DESCRIPTION="Contained here are the GNOME session manager, the GNOME session
@@ -10,8 +10,11 @@ manager configuration program, and several other session management related
 utilities."
 REQUIRES="at-spi2-core eog evince file-roller gcalctool gedit gnome-applets gnome-control-center gnome-desktop gnome-keyring gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus notification-daemon run xdg-user-dirs-gtk xinit"
 
-PATCH_URI="3.6.2-upower.patch
-           3.4.1-llvmpipe.patch"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/gnome-session.git/plain/0001-main-Set-XDG_MENU_PREFIX.patch?h=f18
+	3.6.2-upower.patch
+	3.4.1-llvmpipe.patch
+"
 
 DIFF_EXCLUDES="man"
 
