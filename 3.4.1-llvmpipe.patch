@@ -1,7 +1,0 @@
---- origsrc/gnome-session-3.4.1/data/hardware-compatibility	2011-12-19 03:47:16.000000000 -0600
-+++ src/gnome-session-3.4.1/data/hardware-compatibility	2012-05-08 00:45:35.923865100 -0500
-@@ -24,4 +24,3 @@
- 
- # Gallium has softpipe and llvmpipe
- -softpipe
---llvmpipe
