@@ -2,7 +2,7 @@ inherit gnome2
 
 NAME="gnome-session"
 VERSION=3.8.4
-RELEASE=2
+RELEASE=3
 CATEGORY="GNOME"
 SUMMARY="GNOME session manager"
 DESCRIPTION="Contained here are the GNOME session manager, the GNOME session
