@@ -1,8 +1,8 @@
 inherit gnome2
 
 NAME="gnome-session"
-VERSION=3.14.0
-RELEASE=2
+VERSION=3.18.1.2
+RELEASE=1
 CATEGORY="GNOME"
 SUMMARY="GNOME session manager"
 DESCRIPTION="Contained here are the GNOME session manager, the GNOME session
@@ -11,9 +11,12 @@ utilities."
 
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/gnome-session.git/plain/gnome-session-3.6.2-swrast.patch
+	3.18-rpmatch.patch
 "
 
 DIFF_EXCLUDES="man"
+
+CYGCONF_ARGS="--disable-gconf"
 
 src_install() {
 	cd ${B}

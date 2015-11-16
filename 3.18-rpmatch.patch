@@ -1,0 +1,11 @@
+--- origsrc/gnome-session-3.18.1.2/gnome-session/main.c	2015-10-14 13:33:24.000000000 -0500
++++ src/gnome-session-3.18.1.2/gnome-session/main.c	2015-11-15 23:22:11.053014200 -0600
+@@ -300,7 +300,7 @@ main (int argc, char **argv)
+ 
+         debug_string = g_getenv ("GNOME_SESSION_DEBUG");
+         if (debug_string != NULL) {
+-                debug = rpmatch (debug_string) == TRUE || atoi (debug_string) == 1;
++                debug = *debug_string == 'Y' || *debug_string == 'y' || atoi (debug_string) == 1;
+         }
+ 
+         error = NULL;
