@@ -1,7 +1,7 @@
 inherit gnome2
 
 NAME="gnome-session"
-VERSION=3.22.3
+VERSION=3.24.1
 RELEASE=1
 CATEGORY="GNOME"
 SUMMARY="GNOME session manager"
